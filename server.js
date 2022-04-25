@@ -10,7 +10,7 @@ app.use(express.json())
 app.use('/api/v1/users', userRoutes)
 
 // port number
-const PORT = process.env.PORT || 8080
+const PORT = process.env.SERVER_PORT || 8080
 
 // start server
 app.listen(PORT, () => {
