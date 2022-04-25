@@ -47,12 +47,12 @@ router.get('/findOne', async (req, res) => {
     })
 })
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:username', async (req, res) => {
 
     //validate request
-    if (!req.body.username) return res.status(400).send('Username required..')
+    if (!req.params.username) return res.status(400).send('Username required..')
 
-    db.query("DELETE FROM users WHERE username =$1", [req.body.username], (err, result) => {
+    db.query("DELETE FROM users WHERE username =$1", [req.params.username], (err, result) => {
         if (err) {
             return res.status(500).json(err)
         }
@@ -61,12 +61,12 @@ router.delete('/delete/:id', async (req, res) => {
 
 })
 
-router.put('/update/:id', async (req, res) => {
+router.put('/update/:username', async (req, res) => {
 
     //validate request
-    if (!req.body.username) return res.status(400).send('Username required..')
+    if (!req.params.username) return res.status(400).send('Username required..')
 
-    db.query("UPDATE users SET email = $1, password = $2 WHERE username =$3", [req.body.email, req.body.password, req.body.username], (err, result) => {
+    db.query("UPDATE users SET email = $1, password = $2 WHERE username =$3", [req.body.email, req.body.password, req.params.username], (err, result) => {
         if (err) {
             return res.status(500).json(err)
         }
