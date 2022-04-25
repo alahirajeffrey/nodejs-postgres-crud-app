@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
 
     //find a new user
-    db.query('SELECT * FROM users', (err, result)=>{
+    db.query('SELECT * FROM users', (err, result) => {
         if (err) {
             return res.status(500).json(err)
         }
@@ -35,10 +35,10 @@ router.get('/findAll', async (req, res) => {
 router.get('/findOne', async (req, res) => {
 
     //validate request
-    if(!req.body.username) return res.status(400).send('Username required..')
+    if (!req.body.username) return res.status(400).send('Username required..')
 
     //find a new user
-    db.query('SELECT * FROM users WHERE username =$1', req.body.username, (err, result)=>{
+    db.query('SELECT * FROM users WHERE username =$1', [req.body.username], (err, result) => {
         if (err) {
             return res.status(500).json(err)
         }
@@ -47,10 +47,30 @@ router.get('/findOne', async (req, res) => {
     })
 })
 
-router.delete('/delete/:id', async (req, res)=>{
+router.delete('/delete/:id', async (req, res) => {
+
+    //validate request
+    if (!req.body.username) return res.status(400).send('Username required..')
+
+    db.query("DELETE FROM users WHERE username =$1", [req.body.username], (err, result) => {
+        if (err) {
+            return res.status(500).json(err)
+        }
+        return res.status(200).json({ message: "User deleted successfully..." })
+    })
 
 })
 
-router.update('/update/:id', async (req, res)=>{
-    
+router.put('/update/:id', async (req, res) => {
+
+    //validate request
+    if (!req.body.username) return res.status(400).send('Username required..')
+
+    db.query("UPDATE users SET email = $1, password = $2 WHERE username =$3", [req.body.email, req.body.password, req.body.username], (err, result) => {
+        if (err) {
+            return res.status(500).json(err)
+        }
+        return res.status(200).json({ message: "User modified..." })
+    })
+
 })
