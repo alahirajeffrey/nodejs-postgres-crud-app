@@ -74,3 +74,5 @@ router.put('/update/:username', async (req, res) => {
     })
 
 })
+
+module.exports = router
