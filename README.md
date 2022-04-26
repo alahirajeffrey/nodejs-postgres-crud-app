@@ -16,8 +16,8 @@ This is a beginner friendly guide to using nodejs and postgreSQL to build restfu
 | POST | /api/v1/user/register | Register a new user | req.body.username req.body.password req.body.email |
 | GET | /api/v1/user/findAll | Get all users |  |
 | GET | /api/v1/user/findOne | Get a single user | req.body.username |
-| DELETE | /api/v1/user/delete | Delete a user | req.body.username |
-| UPDATE | /api/v1/user/update/:id | Update a user | req.params.username |
+| DELETE | /api/v1/user/delete/:username | Delete a user | req.params.username |
+| UPDATE | /api/v1/user/update/:username | Update a user | req.params.username |
 
 ## HOW TO USE
 - Ensure you have nodejs, git, postgres and postman installed locally.
@@ -34,4 +34,4 @@ This is a beginner friendly guide to using nodejs and postgreSQL to build restfu
 This project is available for use under the MIT License.
 
 #### NB
-This is just a test app so industry standards where not followed 
+This is just a very basic api and so industry standards were not followed. 
