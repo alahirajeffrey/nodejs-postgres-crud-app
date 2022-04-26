@@ -16,3 +16,6 @@ const PORT = process.env.SERVER_PORT || 8080
 app.listen(PORT, () => {
     console.log(`Server started. Listening on port ${PORT}`)
 })
+
+// export server for testing
+module.exports = app
