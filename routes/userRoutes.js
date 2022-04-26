@@ -27,7 +27,7 @@ router.get('/findAll', async (req, res) => {
         if (err) {
             return res.status(500).json(err)
         }
-        return res.status(201).json(result)
+        return res.status(200).json(result)
 
     })
 })
